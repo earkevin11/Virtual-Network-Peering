@@ -13,7 +13,7 @@
 
 
 
-# Use Case: Allow two different networks to commmunicate with each other
+# Use Case: Allow two networks to commmunicate with each other
 - Create a virtual network peering connection 
 
 <p align="center">
