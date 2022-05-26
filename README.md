@@ -75,8 +75,7 @@
 <p/>
 
 
-# Disable public IP for staging VM and try to access IIS via its private IP
-- Users will see that testingvm cannot access stagingvm because they are on a different network
+# Disable public IP for staging VM and try to access IIS via its private IP on testvm
 - Navigate to the virtual network > NIC > IP Configurations > Select the ipconfig1 > Disassociate 
 
 <p align="center">
@@ -93,6 +92,15 @@
 
 <p/>
 
+# Access stagingvm using testvm via its private IP
+- Since they are on a different network, testvm cannot access stagingvm's webserver via its private IP
+- By default, vnets cannot communicate with each other 
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170578196-267d5b9f-d2d3-4736-bbe6-66ead31c5fc8.png" height="100%" width="100%" alt="VNet peering"/>
+
+<p/>
 
 # Create the VNet peering connection
 - Networking > select the virtual network > peerings > create new 
@@ -108,6 +116,7 @@
 - Here we are connecting the stagingvm to the testvm.
 - Select the virtual network you want to link to the current virtual network. It is under Remote Virtual Network section.
 - stagingvm -> testvm
+- Notice that two connections will be created on both stagingvm and testingvm
 
 <p align="center">
   
@@ -115,16 +124,31 @@
 
 <p/>
 
-
-
-
 # Access IIS via its private IP on testingvm
 - Notice that now testingvm can access IIS from stagingvm via the private IP
 - This is allowed because of the virtual network peering connection that was created
+- Below is the peer connection created for stagingvm
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170579211-65f445f1-29ad-49bb-a7f4-619d5f433856.png" height="150%" width="150%" alt="VNet peering"/>
+
+<p/>
+
+- This peer connection is created for testvm
 
 <p align="center">
   
-<img src="" height="100%" width="100%" alt="VNet peering"/>
+<img src="https://user-images.githubusercontent.com/104326475/170579179-7ed5bad4-fd49-4159-b715-5a024fc1489c.png" height="150%" width="150%" alt="VNet peering"/>
+
+<p/>
+
+- Congrats! The virtual network peering connectiong was successful
+- testvm can now access stagingvm webserver via its private IP
+- Vnet peering connections allows the cross network communication
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170579812-d290109a-cff3-4d18-97e6-421c539317b5.png" height="100%" width="100%" alt="VNet peering"/>
 
 <p/>
 
