@@ -50,19 +50,53 @@
 
 <p/>
 
+# Install IIS on stagingvm 
+- Access staging vm on testvm via its public IP address
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170562384-18c83630-a8dc-43eb-9639-3960def14176.png" height="100%" width="100%" alt="VNet peering"/>
 
-# Disable public IP for staging VM and try to access IIS via its private IP
-- Users will see that testingvm cannot access stagingvm because they are on a different network
+<p/>
+
+-stagingvm's public IP
 
 <p align="center">
   
-<img src="" height="100%" width="100%" alt="VNet peering"/>
+<img src="https://user-images.githubusercontent.com/104326475/170575859-9feaa981-ec0c-4d76-9257-310d0cc2235e.png" height="100%" width="100%" alt="VNet peering"/>
+
+<p/>
+
+- IIS webpage
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170575959-12d210a7-8acb-4010-91e3-dcd144eaf0ca.png" height="100%" width="100%" alt="VNet peering"/>
+
+<p/>
+
+
+# Disable public IP for staging VM and try to access IIS via its private IP
+- Users will see that testingvm cannot access stagingvm because they are on a different network
+- Navigate to the virtual network > NIC > IP Configurations > Select the ipconfig1 > Disassociate 
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170576690-eed4aa7b-4894-4913-bd93-4c05772cc356.png" height="100%" width="100%" alt="VNet peering"/>
+
+<p/>
+
+- Notice that there is no public IP for stagingvm
+
+<p align="center">
+  
+<img src="https://user-images.githubusercontent.com/104326475/170576926-1b7bc2c4-dda3-43f0-861e-691c5e4bc173.png" height="100%" width="100%" alt="VNet peering"/>
 
 <p/>
 
 
 # Create the VNet peering connection
 - Networking > select the virtual network > peerings > create new 
+- This will allow testvm to access stagingvm via its private IP
 
 <p align="center">
   
@@ -82,12 +116,7 @@
 <p/>
 
 
-# Install IIS on stagingvm 
-<p align="center">
-  
-<img src="https://user-images.githubusercontent.com/104326475/170562384-18c83630-a8dc-43eb-9639-3960def14176.png" height="100%" width="100%" alt="VNet peering"/>
 
-<p/>
 
 # Access IIS via its private IP on testingvm
 - Notice that now testingvm can access IIS from stagingvm via the private IP
@@ -98,6 +127,8 @@
 <img src="" height="100%" width="100%" alt="VNet peering"/>
 
 <p/>
+
+
 
 
 
