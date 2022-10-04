@@ -3,7 +3,7 @@
 # What does VNet peering mean?
 - Remember Vnet are isolated by default
 - VNet peering connects VNets together! 
-- It creates two connections and allow two VNets to communicate with each other\
+- It creates two connections and allow two VNets to communicate with each other?
 
 
 
